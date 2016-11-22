@@ -10,7 +10,9 @@ $(document).ajaxSend((evt, xhr, opts) => {
   xhr.setRequestHeader('application-id', secret.appId);
   xhr.setRequestHeader('secret-key', secret.secret);
   xhr.setRequestHeader('application-type', 'REST');
-  xhr.setRequestHeader('user-token', store.session.get('user-token'));
+  if(store.session.get('user-token')){
+    xhr.setRequestHeader('user-token', store.session.get('user-token'));
+}
 });
 
 ReactDom.render(router, container)
